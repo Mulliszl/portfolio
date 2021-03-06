@@ -3,7 +3,7 @@ title: "Links"
 date: "2021-03-06"
 ---
 
-This will serve as a database to links to published bookdowns to avoid redundant copying of local files on my part. Most of these will be from school.
+This will serve as a database to links to published bookdowns to avoid redundant copying of local files on my part. Most of these will be from school. I am in the process of converting these from private repositories to public or into pdfs.
 
 
 # School Work
