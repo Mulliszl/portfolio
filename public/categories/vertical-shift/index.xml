@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vertical Shift on Zach&#39;s website</title>
+    <link>/categories/vertical-shift/</link>
+    <description>Recent content in Vertical Shift on Zach&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/vertical-shift/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Player Data</title>
+      <link>/2021/03/06/player-data/</link>
+      <pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/03/06/player-data/</guid>
+      <description>library(tidyverse) library(plotly) library(rio) library(ggiraphExtra) library(ggthemes) library(readr) Beta day30report &amp;lt;- read_csv(&amp;quot;/tank301/onedrive/OneDrive_Personal/job_stuff/portfolio/Data/day30report.csv&amp;quot;) ## ## ── Column specification ──────────────────────────────────────────────────────── ## cols( ## TitleId = col_character(), ## Ts = col_datetime(format = &amp;quot;&amp;quot;), ## `Total Logins` = col_double(), ## `Unique Logins` = col_double(), ## UniquePayers = col_double(), ## Revenue = col_character(), ## Purchases = col_double(), ## `Total Calls` = col_number(), ## `Total Successful Calls` = col_number(), ## `Total Errors` = col_number(), ## Arpu = col_character(), ## Arppu = col_character(), ## `Average Purchase Price` = col_character(), ## `New Users` = col_double() ## ) glimpse(day30report) ## Rows: 12 ## Columns: 14 ## $ TitleId &amp;lt;chr&amp;gt; &amp;quot;9CEB3&amp;quot;, &amp;quot;9CEB3&amp;quot;, &amp;quot;9CEB3&amp;quot;, &amp;quot;9CEB3&amp;quot;, &amp;quot;9CEB3&amp;quot;, … ## $ Ts &amp;lt;dttm&amp;gt; 2021-02-11, 2021-02-20, 2021-02-21, 2021-02-… ## $ `Total Logins` &amp;lt;dbl&amp;gt; 3, 25, 52, 88, 428, 453, 421, 548, 853, 687, … ## $ `Unique Logins` &amp;lt;dbl&amp;gt; 1, 3, 21, 55, 239, 264, 242, 322, 426, 348, 2… ## $ UniquePayers &amp;lt;dbl&amp;gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ## $ Revenue &amp;lt;chr&amp;gt; &amp;quot;$0.</description>
+    </item>
+    
+  </channel>
+</rss>

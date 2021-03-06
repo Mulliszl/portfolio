@@ -3,12 +3,18 @@ title: Player Data
 author: 'Zach Mullis'
 date: '2021-03-06'
 slug: player-data
-categories: []
+categories: ["Vertical Shift"]
 tags: ["R"]
+output: default
+toc: true
+toc_float: true
 ---
 
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
+<div id="TOC">
+
+</div>
 
 <pre class="r"><code>library(tidyverse)
 library(plotly)
@@ -16,7 +22,8 @@ library(rio)
 library(ggiraphExtra)
 library(ggthemes)
 library(readr)</code></pre>
-<p>#Beta</p>
+<div id="beta" class="section level1">
+<h1>Beta</h1>
 <pre class="r"><code>day30report &lt;- read_csv(&quot;/tank301/onedrive/OneDrive_Personal/job_stuff/portfolio/Data/day30report.csv&quot;)</code></pre>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
@@ -142,6 +149,7 @@ str(d50)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <pre class="r"><code>view(d30)</code></pre>
 <hr />
+</div>
 </div>
 </div>
 <div id="alpha" class="section level1">

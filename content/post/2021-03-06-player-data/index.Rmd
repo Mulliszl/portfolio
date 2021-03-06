@@ -3,8 +3,11 @@ title: Player Data
 author: 'Zach Mullis'
 date: '2021-03-06'
 slug: player-data
-categories: []
+categories: ["Vertical Shift"]
 tags: ["R"]
+output: default
+toc: true
+toc_float: true
 ---
 
 ```{r load-packages, message=FALSE}
@@ -16,7 +19,7 @@ library(ggthemes)
 library(readr)
 ```
 
-#Beta
+# Beta
 
 ```{r warning=FALSE}
 day30report <- read_csv("/tank301/onedrive/OneDrive_Personal/job_stuff/portfolio/Data/day30report.csv")
