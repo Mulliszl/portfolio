@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.81.0" />
+
+
+<title>Player Data - Zach&#39;s website</title>
+<meta property="og:title" content="Player Data - Zach&#39;s website">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    <h1 class="article-title">Player Data</h1>
+
+    
+    <span class="article-date">0001-01-01</span>
+    
+
+    <div class="article-content">
+      <pre><code class="language-{r" data-lang="{r">library(tidyverse)
+library(plotly)
+library(rio)
+library(ggiraphExtra)
+library(ggthemes)
+library(readr)
+</code></pre><p>#Beta</p>
+<pre><code class="language-{r" data-lang="{r">day30report &lt;- read.csv(&quot;Data/day30report.csv&quot;)
+glimpse(day30report)
+</code></pre><hr>
+<h2 id="untouched-data">untouched data</h2>
+<pre><code class="language-{r}" data-lang="{r}">ggplot(day30report, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;New Players since 2/11&quot;) + xlab(&quot;Time Stamp&quot;)
+</code></pre><hr>
+<h2 id="removing-crashed-data">removing crashed data</h2>
+<pre><code class="language-{r}" data-lang="{r}">d30 &lt;-
+  day30report[-c(10,11,12),]
+str(d30)
+</code></pre><hr>
+<h3 id="edited-data-graph">Edited data graph</h3>
+<pre><code class="language-{r}" data-lang="{r}">ggplot(d30, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;New Players since 2/11&quot;) + xlab(&quot;Time Stamp&quot;)
+</code></pre><hr>
+<h2 id="mutated-error-function">mutated Error function</h2>
+<pre><code class="language-{r}" data-lang="{r}">d50 &lt;- day30report %&gt;%
+  mutate(errors = ave(`Total Errors`, FUN=function(x) c(0, diff(x))))
+str(d50)
+</code></pre><hr>
+<h3 id="d50-plot">d50 plot</h3>
+<pre><code class="language-{r}" data-lang="{r}">ggplot(d50, aes(Ts, `errors`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;number of errors since last time stamp 2/11&quot;) + xlab(&quot;Time Stamp&quot;)
+view(d30)
+</code></pre><hr>
+<h1 id="alpha">Alpha</h1>
+<pre><code class="language-{r" data-lang="{r">alpha30 &lt;- read_csv(&quot;Data/alphadata30.csv&quot;)
+alpha30
+</code></pre><h2 id="untouched-data-1">untouched data</h2>
+<pre><code class="language-{r}" data-lang="{r}">ggplot(alpha30, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;New Players since 2/11&quot;) + xlab(&quot;Time Stamp&quot;)
+</code></pre><hr>
+<h2 id="removing-crashed-data-1">removing crashed data</h2>
+<pre><code class="language-{r}" data-lang="{r}">a30 &lt;-
+  alpha30[-c(10,11,12),]
+str(d30)
+</code></pre><hr>
+<h3 id="edited-data-graph-1">Edited data graph</h3>
+<pre><code class="language-{r}" data-lang="{r}">ggplot(a30, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;New Players since 2/11&quot;) + xlab(&quot;Time Stamp&quot;)
+</code></pre><hr>
+<h2 id="mutated-error-function-1">mutated Error function</h2>
+<pre><code class="language-{r}" data-lang="{r}">a50 &lt;- alpha30 %&gt;%
+  mutate(errors = ave(`Total Errors`, FUN=function(x) c(0, diff(x))))
+str(a50)
+</code></pre><hr>
+<h3 id="d50-plot-1">d50 plot</h3>
+<pre><code class="language-{r}" data-lang="{r}">ggplot(a50, aes(Ts, `errors`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;number of errors since last time stamp 2/11&quot;) + xlab(&quot;Time Stamp&quot;)
+view(a30)
+</code></pre>
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+

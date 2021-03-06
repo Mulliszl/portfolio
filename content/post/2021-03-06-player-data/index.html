@@ -1,0 +1,256 @@
+---
+title: Player Data
+author: 'Zach Mullis'
+date: '2021-03-06'
+slug: player-data
+categories: []
+tags: ["R"]
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<pre class="r"><code>library(tidyverse)
+library(plotly)
+library(rio)
+library(ggiraphExtra)
+library(ggthemes)
+library(readr)</code></pre>
+<p>#Beta</p>
+<pre class="r"><code>day30report &lt;- read_csv(&quot;/tank301/onedrive/OneDrive_Personal/job_stuff/portfolio/Data/day30report.csv&quot;)</code></pre>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   TitleId = col_character(),
+##   Ts = col_datetime(format = &quot;&quot;),
+##   `Total Logins` = col_double(),
+##   `Unique Logins` = col_double(),
+##   UniquePayers = col_double(),
+##   Revenue = col_character(),
+##   Purchases = col_double(),
+##   `Total Calls` = col_number(),
+##   `Total Successful Calls` = col_number(),
+##   `Total Errors` = col_number(),
+##   Arpu = col_character(),
+##   Arppu = col_character(),
+##   `Average Purchase Price` = col_character(),
+##   `New Users` = col_double()
+## )</code></pre>
+<pre class="r"><code>glimpse(day30report)</code></pre>
+<pre><code>## Rows: 12
+## Columns: 14
+## $ TitleId                  &lt;chr&gt; &quot;9CEB3&quot;, &quot;9CEB3&quot;, &quot;9CEB3&quot;, &quot;9CEB3&quot;, &quot;9CEB3&quot;, …
+## $ Ts                       &lt;dttm&gt; 2021-02-11, 2021-02-20, 2021-02-21, 2021-02-…
+## $ `Total Logins`           &lt;dbl&gt; 3, 25, 52, 88, 428, 453, 421, 548, 853, 687, …
+## $ `Unique Logins`          &lt;dbl&gt; 1, 3, 21, 55, 239, 264, 242, 322, 426, 348, 2…
+## $ UniquePayers             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+## $ Revenue                  &lt;chr&gt; &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, …
+## $ Purchases                &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+## $ `Total Calls`            &lt;dbl&gt; 52, 529, 1533, 2778, 12017, 13071, 12011, 155…
+## $ `Total Successful Calls` &lt;dbl&gt; 49, 523, 1465, 2636, 11160, 12004, 10822, 142…
+## $ `Total Errors`           &lt;dbl&gt; 3, 6, 68, 142, 857, 1067, 1189, 1296, 2182, 2…
+## $ Arpu                     &lt;chr&gt; &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, …
+## $ Arppu                    &lt;chr&gt; &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, …
+## $ `Average Purchase Price` &lt;chr&gt; &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, &quot;$0.00&quot;, …
+## $ `New Users`              &lt;dbl&gt; 1, 3, 18, 49, 219, 230, 203, 266, 351, 269, 1…</code></pre>
+<hr />
+<div id="untouched-data" class="section level2">
+<h2>untouched data</h2>
+<pre class="r"><code>ggplot(day30report, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;New Players since 2/11&quot;) + xlab(&quot;Time Stamp&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="removing-crashed-data" class="section level2">
+<h2>removing crashed data</h2>
+<pre class="r"><code>d30 &lt;-
+  day30report[-c(10,11,12),]
+str(d30)</code></pre>
+<pre><code>## tibble [9 × 14] (S3: tbl_df/tbl/data.frame)
+##  $ TitleId               : chr [1:9] &quot;9CEB3&quot; &quot;9CEB3&quot; &quot;9CEB3&quot; &quot;9CEB3&quot; ...
+##  $ Ts                    : POSIXct[1:9], format: &quot;2021-02-11&quot; &quot;2021-02-20&quot; ...
+##  $ Total Logins          : num [1:9] 3 25 52 88 428 453 421 548 853
+##  $ Unique Logins         : num [1:9] 1 3 21 55 239 264 242 322 426
+##  $ UniquePayers          : num [1:9] 0 0 0 0 0 0 0 0 0
+##  $ Revenue               : chr [1:9] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Purchases             : num [1:9] 0 0 0 0 0 0 0 0 0
+##  $ Total Calls           : num [1:9] 52 529 1533 2778 12017 ...
+##  $ Total Successful Calls: num [1:9] 49 523 1465 2636 11160 ...
+##  $ Total Errors          : num [1:9] 3 6 68 142 857 ...
+##  $ Arpu                  : chr [1:9] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Arppu                 : chr [1:9] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Average Purchase Price: chr [1:9] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ New Users             : num [1:9] 1 3 18 49 219 230 203 266 351</code></pre>
+<hr />
+<div id="edited-data-graph" class="section level3">
+<h3>Edited data graph</h3>
+<pre class="r"><code>ggplot(d30, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;New Players since 2/11&quot;) + xlab(&quot;Time Stamp&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="mutated-error-function" class="section level2">
+<h2>mutated Error function</h2>
+<pre class="r"><code>d50 &lt;- day30report %&gt;%
+  mutate(errors = ave(`Total Errors`, FUN=function(x) c(0, diff(x))))
+str(d50)</code></pre>
+<pre><code>## spec_tbl_df [12 × 15] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ TitleId               : chr [1:12] &quot;9CEB3&quot; &quot;9CEB3&quot; &quot;9CEB3&quot; &quot;9CEB3&quot; ...
+##  $ Ts                    : POSIXct[1:12], format: &quot;2021-02-11&quot; &quot;2021-02-20&quot; ...
+##  $ Total Logins          : num [1:12] 3 25 52 88 428 453 421 548 853 687 ...
+##  $ Unique Logins         : num [1:12] 1 3 21 55 239 264 242 322 426 348 ...
+##  $ UniquePayers          : num [1:12] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ Revenue               : chr [1:12] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Purchases             : num [1:12] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ Total Calls           : num [1:12] 52 529 1533 2778 12017 ...
+##  $ Total Successful Calls: num [1:12] 49 523 1465 2636 11160 ...
+##  $ Total Errors          : num [1:12] 3 6 68 142 857 ...
+##  $ Arpu                  : chr [1:12] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Arppu                 : chr [1:12] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Average Purchase Price: chr [1:12] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ New Users             : num [1:12] 1 3 18 49 219 230 203 266 351 269 ...
+##  $ errors                : num [1:12] 0 3 62 74 715 210 122 107 886 297 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   TitleId = col_character(),
+##   ..   Ts = col_datetime(format = &quot;&quot;),
+##   ..   `Total Logins` = col_double(),
+##   ..   `Unique Logins` = col_double(),
+##   ..   UniquePayers = col_double(),
+##   ..   Revenue = col_character(),
+##   ..   Purchases = col_double(),
+##   ..   `Total Calls` = col_number(),
+##   ..   `Total Successful Calls` = col_number(),
+##   ..   `Total Errors` = col_number(),
+##   ..   Arpu = col_character(),
+##   ..   Arppu = col_character(),
+##   ..   `Average Purchase Price` = col_character(),
+##   ..   `New Users` = col_double()
+##   .. )</code></pre>
+<hr />
+<div id="d50-plot" class="section level3">
+<h3>d50 plot</h3>
+<pre class="r"><code>ggplot(d50, aes(Ts, `errors`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;number of errors since last time stamp 2/11&quot;) + xlab(&quot;Time Stamp&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<pre class="r"><code>view(d30)</code></pre>
+<hr />
+</div>
+</div>
+<div id="alpha" class="section level1">
+<h1>Alpha</h1>
+<pre class="r"><code>alpha30 &lt;- read_csv(&quot;/tank301/onedrive/OneDrive_Personal/job_stuff/portfolio/Data/alphadata30.csv&quot;)
+alpha30</code></pre>
+<pre><code>## # A tibble: 30 x 14
+##    TitleId Ts                  `Total Logins` `Unique Logins` UniquePayers
+##    &lt;chr&gt;   &lt;dttm&gt;                       &lt;dbl&gt;           &lt;dbl&gt;        &lt;dbl&gt;
+##  1 D8AB8   2021-01-20 00:00:00             25              13            0
+##  2 D8AB8   2021-01-21 00:00:00             53              15            0
+##  3 D8AB8   2021-01-22 00:00:00             18               7            0
+##  4 D8AB8   2021-01-23 00:00:00             33               9            0
+##  5 D8AB8   2021-01-24 00:00:00             56              14            0
+##  6 D8AB8   2021-01-25 00:00:00             37               9            0
+##  7 D8AB8   2021-01-26 00:00:00             42               9            0
+##  8 D8AB8   2021-01-27 00:00:00             45               5            0
+##  9 D8AB8   2021-01-28 00:00:00             58              13            0
+## 10 D8AB8   2021-01-29 00:00:00            131              14            0
+## # … with 20 more rows, and 9 more variables: Revenue &lt;chr&gt;, Purchases &lt;dbl&gt;,
+## #   Total Calls &lt;dbl&gt;, Total Successful Calls &lt;dbl&gt;, Total Errors &lt;dbl&gt;,
+## #   Arpu &lt;chr&gt;, Arppu &lt;chr&gt;, Average Purchase Price &lt;chr&gt;, New Users &lt;dbl&gt;</code></pre>
+<div id="untouched-data-1" class="section level2">
+<h2>untouched data</h2>
+<pre class="r"><code>ggplot(alpha30, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;New Players since 2/11&quot;) + xlab(&quot;Time Stamp&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="removing-crashed-data-1" class="section level2">
+<h2>removing crashed data</h2>
+<pre class="r"><code>a30 &lt;-
+  alpha30[-c(10,11,12),]
+str(d30)</code></pre>
+<pre><code>## tibble [9 × 14] (S3: tbl_df/tbl/data.frame)
+##  $ TitleId               : chr [1:9] &quot;9CEB3&quot; &quot;9CEB3&quot; &quot;9CEB3&quot; &quot;9CEB3&quot; ...
+##  $ Ts                    : POSIXct[1:9], format: &quot;2021-02-11&quot; &quot;2021-02-20&quot; ...
+##  $ Total Logins          : num [1:9] 3 25 52 88 428 453 421 548 853
+##  $ Unique Logins         : num [1:9] 1 3 21 55 239 264 242 322 426
+##  $ UniquePayers          : num [1:9] 0 0 0 0 0 0 0 0 0
+##  $ Revenue               : chr [1:9] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Purchases             : num [1:9] 0 0 0 0 0 0 0 0 0
+##  $ Total Calls           : num [1:9] 52 529 1533 2778 12017 ...
+##  $ Total Successful Calls: num [1:9] 49 523 1465 2636 11160 ...
+##  $ Total Errors          : num [1:9] 3 6 68 142 857 ...
+##  $ Arpu                  : chr [1:9] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Arppu                 : chr [1:9] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Average Purchase Price: chr [1:9] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ New Users             : num [1:9] 1 3 18 49 219 230 203 266 351</code></pre>
+<hr />
+<div id="edited-data-graph-1" class="section level3">
+<h3>Edited data graph</h3>
+<pre class="r"><code>ggplot(a30, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;New Players since 2/11&quot;) + xlab(&quot;Time Stamp&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="mutated-error-function-1" class="section level2">
+<h2>mutated Error function</h2>
+<pre class="r"><code>a50 &lt;- alpha30 %&gt;%
+  mutate(errors = ave(`Total Errors`, FUN=function(x) c(0, diff(x))))
+str(a50)</code></pre>
+<pre><code>## spec_tbl_df [30 × 15] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ TitleId               : chr [1:30] &quot;D8AB8&quot; &quot;D8AB8&quot; &quot;D8AB8&quot; &quot;D8AB8&quot; ...
+##  $ Ts                    : POSIXct[1:30], format: &quot;2021-01-20&quot; &quot;2021-01-21&quot; ...
+##  $ Total Logins          : num [1:30] 25 53 18 33 56 37 42 45 58 131 ...
+##  $ Unique Logins         : num [1:30] 13 15 7 9 14 9 9 5 13 14 ...
+##  $ UniquePayers          : num [1:30] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ Revenue               : chr [1:30] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Purchases             : num [1:30] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ Total Calls           : num [1:30] 951 1938 1050 671 1442 ...
+##  $ Total Successful Calls: num [1:30] 947 1851 1050 663 1426 ...
+##  $ Total Errors          : num [1:30] 4 87 0 8 16 24 97 0 38 141 ...
+##  $ Arpu                  : chr [1:30] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Arppu                 : chr [1:30] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ Average Purchase Price: chr [1:30] &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; &quot;$0.00&quot; ...
+##  $ New Users             : num [1:30] 1 3 0 1 3 2 4 0 3 5 ...
+##  $ errors                : num [1:30] 0 83 -87 8 8 8 73 -97 38 103 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   TitleId = col_character(),
+##   ..   Ts = col_datetime(format = &quot;&quot;),
+##   ..   `Total Logins` = col_double(),
+##   ..   `Unique Logins` = col_double(),
+##   ..   UniquePayers = col_double(),
+##   ..   Revenue = col_character(),
+##   ..   Purchases = col_double(),
+##   ..   `Total Calls` = col_number(),
+##   ..   `Total Successful Calls` = col_number(),
+##   ..   `Total Errors` = col_double(),
+##   ..   Arpu = col_character(),
+##   ..   Arppu = col_character(),
+##   ..   `Average Purchase Price` = col_character(),
+##   ..   `New Users` = col_double()
+##   .. )</code></pre>
+<hr />
+<div id="d50-plot-1" class="section level3">
+<h3>d50 plot</h3>
+<pre class="r"><code>ggplot(a50, aes(Ts, `errors`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = &quot;number of errors since last time stamp 2/11&quot;) + xlab(&quot;Time Stamp&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>view(a30)</code></pre>
+</div>
+</div>
+</div>

@@ -1,8 +1,10 @@
 ---
-title: "Player Data"
-author: "Zach Mullis"
-date: "`r Sys.Date()`"
-categories: ["R"]
+title: Player Data
+author: 'Zach Mullis'
+date: '2021-03-06'
+slug: player-data
+categories: []
+tags: ["R"]
 ---
 
 ```{r load-packages, message=FALSE}
@@ -17,7 +19,7 @@ library(readr)
 #Beta
 
 ```{r warning=FALSE}
-day30report <- read.csv("Data/day30report.csv")
+day30report <- read_csv("/tank301/onedrive/OneDrive_Personal/job_stuff/portfolio/Data/day30report.csv")
 glimpse(day30report)
 ```
 
@@ -80,7 +82,7 @@ _____________
 # Alpha
 
 ```{r message=FALSE, warning=FALSE}
-alpha30 <- read_csv("Data/alphadata30.csv")
+alpha30 <- read_csv("/tank301/onedrive/OneDrive_Personal/job_stuff/portfolio/Data/alphadata30.csv")
 alpha30
 ```
 
