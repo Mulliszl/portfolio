@@ -1,0 +1,137 @@
+---
+title: "Player Data"
+author: "Zach Mullis"
+date: "`r Sys.Date()`"
+categories: ["R"]
+---
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(plotly)
+library(rio)
+library(ggiraphExtra)
+library(ggthemes)
+library(readr)
+```
+
+#Beta
+
+```{r warning=FALSE}
+day30report <- read.csv("Data/day30report.csv")
+glimpse(day30report)
+```
+
+________
+
+## untouched data
+
+```{r}
+ggplot(day30report, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = "New Players since 2/11") + xlab("Time Stamp")
+```
+
+__________
+
+## removing crashed data
+
+```{r}
+d30 <-
+  day30report[-c(10,11,12),]
+str(d30)
+```
+
+_________
+
+### Edited data graph
+
+```{r}
+ggplot(d30, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = "New Players since 2/11") + xlab("Time Stamp")
+```
+
+___________
+
+## mutated Error function
+
+```{r}
+d50 <- day30report %>%
+  mutate(errors = ave(`Total Errors`, FUN=function(x) c(0, diff(x))))
+str(d50)
+```
+
+__________
+
+### d50 plot
+
+```{r}
+ggplot(d50, aes(Ts, `errors`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = "number of errors since last time stamp 2/11") + xlab("Time Stamp")
+view(d30)
+```
+
+_____________
+
+# Alpha
+
+```{r message=FALSE, warning=FALSE}
+alpha30 <- read_csv("Data/alphadata30.csv")
+alpha30
+```
+
+## untouched data
+
+```{r}
+ggplot(alpha30, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = "New Players since 2/11") + xlab("Time Stamp")
+```
+
+__________
+
+## removing crashed data
+
+```{r}
+a30 <-
+  alpha30[-c(10,11,12),]
+str(d30)
+```
+
+_________
+
+### Edited data graph
+
+```{r}
+ggplot(a30, aes(Ts, `New Users`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = "New Players since 2/11") + xlab("Time Stamp")
+```
+
+___________
+
+## mutated Error function
+
+```{r}
+a50 <- alpha30 %>%
+  mutate(errors = ave(`Total Errors`, FUN=function(x) c(0, diff(x))))
+str(a50)
+```
+
+__________
+
+### d50 plot
+
+```{r}
+ggplot(a50, aes(Ts, `errors`))+
+  geom_line()+
+  theme_clean()+
+  labs(title = "number of errors since last time stamp 2/11") + xlab("Time Stamp")
+view(a30)
+```
