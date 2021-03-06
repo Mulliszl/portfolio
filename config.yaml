@@ -20,6 +20,8 @@ menu:
       url: https://github.com/Mulliszl
     - name: Linkedin
       url: https://www.linkedin.com/in/zachary-m-4885a6121/
+    - name: Links
+      url: /links/
 params:
   MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
   MathJaxVersion: 2.7.5
