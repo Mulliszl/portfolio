@@ -16,8 +16,12 @@ This will serve as a database to links to published bookdowns to avoid redundant
 
 - [Correlation and Regression](https://statisticalmodeling.github.io/correlationandregression-Mulliszl/)
 
-- [Multiple and Logistic Regression](https://statisticalmodeling.github.io/multipleandlogisticregression-Mulliszl)
+- [Multiple and Logistic Regression](https://statisticalmodeling.github.io/multipleandlogisticregression-Mulliszl/)
 
-- [Wine Regression Group Project](https://statisticalmodeling.github.io/regressionpresentation-project-1-zach-matt-maybe-a-third/StarterSlides.html)
+- [Wine linear Regression Group Project](https://statisticalmodeling.github.io/regressionpresentation-project-1-zach-matt-maybe-a-third/StarterSlides.html)
 
-- [Machine Learning with Carat](https://statisticalmodeling.github.io/machinelearningwithcaret-Mulliszl)
+- [Wine Logistic Regression Group Project](https://statisticalmodeling.github.io/logisticpresentation-project-1-zach-matt-maybe-a-third/xariganSlides.html)
+
+- [Machine Learning with Carat](https://statisticalmodeling.github.io/machinelearningwithcaret-Mulliszl/selecting-models-a-case-study-in-churn-prediction.html)
+
+# Other
