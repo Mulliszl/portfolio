@@ -13,14 +13,11 @@
       <pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>/links/</guid>
-      <description>This will serve as a database to links to published bookdowns to avoid redundant copying of local files on my part. Most of these will be from school.
+      <description>This will serve as a database to links to published bookdowns to avoid redundant copying of local files on my part. Most of these will be from school. I am in the process of converting these from private repositories to public or into pdfs.
 School Work   Midterm Test Prep Question
   Individual Write-ups
   Data Camp   Correlation and Regression
-  Multiple and Logistic Regression
-  Wine Regression Group Project
-  Machine Learning with Carat
-  </description>
+  Multiple and Logistic Regression</description>
     </item>
     
     <item>
@@ -38,8 +35,8 @@ School Work   Midterm Test Prep Question
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       
       <guid>/about/</guid>
-      <description>This is a test site that I will be using to learn and use as a portfolio.
-I am using the blogdown package.
+      <description>This is a test site that I will be using to learn and use as a portfolio. My personal and work projects will be posted on the main page, while the Links page will will direct you to projects, most of which will be school related.
+I am using the blogdown package to create, customize, and manage this site.
 The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
     </item>
     
