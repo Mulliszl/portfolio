@@ -12,6 +12,8 @@ This will serve as a database to links to published bookdowns to avoid redundant
 
 - [Individual Write-ups](https://statisticalmodeling.github.io/individualwriteups-Mulliszl)
 
+- [Statistical Methods Final project](https://mulliszl.github.io/Methods_project/)
+
 ## Data Camp
 
 - [Correlation and Regression](https://statisticalmodeling.github.io/correlationandregression-Mulliszl/)
