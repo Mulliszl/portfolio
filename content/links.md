@@ -12,7 +12,7 @@ This will serve as a database to links to published bookdowns to avoid redundant
 
 - [Individual Write-ups](https://statisticalmodeling.github.io/individualwriteups-Mulliszl)
 
-- [Statistical Methods Final project](https://mulliszl.github.io/Methods_project/)
+- [Statistical Methods Final project](https://mulliszl.github.io/Methods_project/Presentation.html#1)
 
 ## Data Camp
 
