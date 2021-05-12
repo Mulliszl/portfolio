@@ -7,4 +7,5 @@ categories: work
 tags: Cthulhu
 ---
 
-<img src="images/cirtificate_of_ordination.png" alt="" width="600px" height="600px"/>
+
+<img src="images/certificate_of_ordination.jpeg" alt="Certificate of Ordination"/>
