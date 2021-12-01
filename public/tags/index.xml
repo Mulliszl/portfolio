@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Zach&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UX</title>
+      <link>/tags/ux/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cthulhu</title>
+      <link>/tags/cthulhu/</link>
+      <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/cthulhu/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>R</title>
       <link>/tags/r/</link>
