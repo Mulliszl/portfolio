@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>UX on Zach&#39;s website</title>
-    <link>/tags/ux/</link>
-    <description>Recent content in UX on Zach&#39;s website</description>
+    <title>Wireframing on Zach&#39;s website</title>
+    <link>/tags/wireframing/</link>
+    <description>Recent content in Wireframing on Zach&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 08 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/ux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 08 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/wireframing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lumata Wireframe Prototype</title>
       <link>/2022/12/08/lumata-wireframe/</link>
@@ -17,18 +17,6 @@
 Link to Powerpoint Presentation
 Link to Task Analysis
 Executive Summary The objective of this project was to develop the wireframe for a mobile application that serves as a cognitive aid for glaucoma patients as they adhere to a medicated eye drop regimen in hopes of slowing disease progression and maintaining eyesight. The application&amp;rsquo;s core purpose is threefold: (1) to provide daily reminders to patients in keeping with their prescribed medication schedule, (2) to house both motivational and educational content that will encourage patients to adhere to their medication regimen, and (3) to connect patients with their care coordinators and provide valuable, relatively objective adherence data to care coordinators and medical professionals involved in the patients&#39; treatment.</description>
-    </item>
-    
-    <item>
-      <title>Developer Contact Template for Usability Review</title>
-      <link>/2021/12/01/developer-contact-template-for-usability-review/</link>
-      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/12/01/developer-contact-template-for-usability-review/</guid>
-      <description>Hi &amp;laquo;name&amp;raquo;
-I&amp;rsquo;m Zachary Mullis, and I run usability reviews of games which identify usability and UX issues that will prevent players from experiencing it the way you expect.
-I saw your post looking for playters for &amp;laquo;game&amp;raquo;, and wondered if you would be interesting in a usability review for it. I will identify usability problems, and send you a report covering the top issues.
-I wouldn&amp;rsquo;t charge for the review, but I&amp;rsquo;d also be really interested in sharing this as a cast study on my portfolio/blog (https://mulliszl.</description>
     </item>
     
   </channel>

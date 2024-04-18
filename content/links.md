@@ -5,6 +5,11 @@ date: "2021-03-06"
 
 This will serve as a database to links to published bookdowns to avoid redundant copying of local files on my part. Most of these will be from school. I am in the process of converting these from private repositories to public or into pdfs.
 
+# Writing Samples
+[Research Proposal](https://docs.google.com/document/d/1fvSyWtf_F7YJHFVmQM830x-8nzJZQtR5/edit?usp=sharing&ouid=100903179845853780988&rtpof=true&sd=true)
+
+[EEG Analysis Project: Sex Differences in the Perception of Pain
+From a Noxious Laser Stimulus](https://docs.google.com/document/d/1RQd-D6MkAzlSZcl_vkxM5pkV0feJaquKT5Cwb1r9_vA/edit#heading=h.xcdbnimzh7a0)
 
 # School Work
 
